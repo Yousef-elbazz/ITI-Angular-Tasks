@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Professional E-commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Login Page Styles */
+        .login-page {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23bg)"/><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="400" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="1000" cy="600" r="80" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main Website Styles */
+        .main-site {
+            display: none;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Products Page */
+        .products-page {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%23f8f9fa"/><circle cx="300" cy="300" r="2" fill="%23667eea" opacity="0.3"/><circle cx="600" cy="150" r="2" fill="%23764ba2" opacity="0.3"/><circle cx="900" cy="450" r="2" fill="%23667eea" opacity="0.3"/><circle cx="150" cy="600" r="2" fill="%23764ba2" opacity="0.3"/></svg>');
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: white;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Product Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-image {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: white;
+        }
+
+        .specs-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .specs-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .spec-value {
+            color: #666;
+        }
+
+        /* About Us Page */
+        .about-page {
+            background: linear-gradient(135deg, rgba(118, 75, 162, 0.1), rgba(102, 126, 234, 0.1));
+            min-height: 100vh;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1em;
+        }
+
+        /* Contact Us Page */
+        .contact-page {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            min-height: 100vh;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 120px;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h2 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #667eea;
+        }
+
+        .contact-item-text {
+            flex: 1;
+        }
+
+        .contact-item h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .login-container {
+                width: 90%;
+                padding: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+
+            .modal-content {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>TechStore</h1>
+                <p>Welcome back! Please sign in to your account.</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-secondary" id="signupBtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div class="login-page" id="signupPage" style="display: none;">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Join TechStore</h1>
+                <p>Create your account to get started.</p>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="newUsername">Username</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Password</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <button type="button" class="btn btn-secondary" id="backToLoginBtn">Back to Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <div class="main-site" id="mainSite">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">TechStore</div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-page="products">Products</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Products Page -->
+            <div class="page active products-page" id="productsPage">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Our Products</h1>
+                        <p>Discover our premium collection of technology products</p>
+                    </div>
+                    <div class="products-grid">
+                        <div class="product-card" onclick="showProductModal('laptop')">
+                            <div class="product-image">💻</div>
+                            <div class="product-info">
+                                <div class="product-name">Premium Laptop</div>
+                                <div class="product-price">$1,299</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('smartphone')">
+                            <div class="product-image">📱</div>
+                            <div class="product-info">
+                                <div class="product-name">Smart Phone</div>
+                                <div class="product-price">$899</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('tablet')">
+                            <div class="product-image">📟</div>
+                            <div class="product-info">
+                                <div class="product-name">Tablet Pro</div>
+                                <div class="product-price">$599</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('headphones')">
+                            <div class="product-image">🎧</div>
+                            <div class="product-info">
+                                <div class="product-name">Wireless Headphones</div>
+                                <div class="product-price">$299</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('watch')">
+                            <div class="product-image">⌚</div>
+                            <div class="product-info">
+                                <div class="product-name">Smart Watch</div>
+                                <div class="product-price">$399</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('camera')">
+                            <div class="product-image">📷</div>
+                            <div class="product-info">
+                                <div class="product-name">Digital Camera</div>
+                                <div class="product-price">$799</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('speaker')">
+                            <div class="product-image">🔊</div>
+                            <div class="product-info">
+                                <div class="product-name">Bluetooth Speaker</div>
+                                <div class="product-price">$199</div>
+                            </div>
+                        </div>
+                        <div class="product-card" onclick="showProductModal('gaming')">
+                            <div class="product-image">🎮</div>
+                            <div class="product-info">
+                                <div class="product-name">Gaming Console</div>
+                                <div class="product-price">$499</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Us Page -->
+            <div class="page about-page" id="aboutPage">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>About TechStore</h1>
+                        <p>Your trusted partner in technology</p>
+                    </div>
+                    <div class="about-content">
+                        <h2>Our Story</h2>
+                        <p>TechStore was founded in 2015 with a simple mission: to make cutting-edge technology accessible to everyone. We believe that technology should enhance lives, not complicate them.</p>
+                        <p>Over the years, we've grown from a small startup to a leading technology retailer, serving thousands of satisfied customers worldwide. Our commitment to quality, innovation, and customer satisfaction remains unwavering.</p>
+                        <p>We carefully curate our product selection to ensure that every item meets our high standards for performance, reliability, and value. From the latest smartphones to professional-grade laptops, we've got you covered.</p>
+                        
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h3>Quality First</h3>
+                                <p>We rigorously test every product to ensure it meets our high standards for performance and reliability.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🚀</div>
+                                <h3>Innovation</h3>
+                                <p>We stay ahead of the curve, bringing you the latest technological innovations and trends.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🛡️</div>
+                                <h3>Trust & Security</h3>
+                                <p>Your privacy and security are our top priorities. Shop with confidence knowing your data is safe.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">💬</div>
+                                <h3>Expert Support</h3>
+                                <p>Our knowledgeable team is always ready to help you find the perfect tech solution for your needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Us Page -->
+            <div class="page contact-page" id="contactPage">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Contact Us</h1>
+                        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                    </div>
+                    <div class="contact-content">
+                        <div class="contact-form">
+                            <h2>Send us a Message</h2>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="contactName">Your Name</label>
+                                    <input type="text" id="contactName" name="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address</label>
+                                    <input type="email" id="contactEmail" name="contactEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject</label>
+                                    <input type="text" id="contactSubject" name="contactSubject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactMessage">Message</label>
+                                    <textarea id="contactMessage" name="contactMessage" placeholder="Tell us how we can help you..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                            </form>
+                        </div>
+                        <div class="contact-info">
+                            <h2>Get in Touch</h2>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">📍</div>
+                                <div class="contact-item-text">
+                                    <h3>Address</h3>
+                                    <p>123 Tech Street, Innovation District<br>San Francisco, CA 94102</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">📞</div>
+                                <div class="contact-item-text">
+                                    <h3>Phone</h3>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">📧</div>
+                                <div class="contact-item-text">
+                                    <h3>Email</h3>
+                                    <p>info@techstore.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">🕒</div>
+                                <div class="contact-item-text">
+                                    <h3>Business Hours</h3>
+                                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeProductModal()">&times;</span>
+            <div class="modal-header">
+                <div class="modal-image" id="modalImage"></div>
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <h3>Specifications</h3>
+                <ul class="specs-list" id="modalSpecs"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product data
+        const products = {
+            laptop: {
+                name: 'Premium Laptop',
+                icon: '💻',
+                specs: {
+                    'Processor': 'Intel Core i7-12700H',
+                    'Memory': '16GB DDR4 RAM',
+                    'Storage': '512GB SSD',
+                    'Display': '15.6" Full HD IPS',
+                    'Graphics': 'NVIDIA GeForce RTX 3060',
+                    'Battery': 'Up to 10 hours',
+                    'Weight': '2.1 kg',
+                    'OS': 'Windows 11 Pro'
+                }
+            },
+            smartphone: {
+                name: 'Smart Phone',
+                icon: '📱',
+                specs: {
+                    'Display': '6.7" OLED 120Hz',
+                    'Processor': 'Snapdragon 8 Gen 2',
+                    'Memory': '8GB RAM',
+                    'Storage': '256GB Internal',
+                    'Camera': '108MP Triple Camera',
+                    'Battery': '5000mAh Fast Charging',
+                    'OS': 'Android 13',
+                    'Network': '5G Ready'
+                }
+            },
+            tablet: {
+                name: 'Tablet Pro',
+                icon: '📟',
+                specs: {
+                    'Display': '11" Liquid Retina',
+                    'Processor': 'Apple M2 Chip',
+                    'Memory': '8GB RAM',
+                    'Storage': '256GB SSD',
+                    'Camera': '12MP Ultra Wide',
+                    'Battery': 'Up to 12 hours',
+                    'Weight': '466g',
+                    'Connectivity': 'Wi-Fi 6E + Cellular'
+                }
+            },
+            headphones: {
+                name: 'Wireless Headphones',
+                icon: '🎧',
+                specs: {
+                    'Type': 'Over-Ear Wireless',
+                    'Driver': '40mm Dynamic',
+                    'Frequency': '20Hz - 20kHz',
+                    'Battery': '30 hours playback',
+                    'Charging': 'USB-C Quick Charge',
+                    'Noise Cancellation': 'Active ANC',
+                    'Bluetooth': 'Version 5.3',
+                    'Weight': '250g'
+                }
+            },
+            watch: {
+                name: 'Smart Watch',
+                icon: '⌚',
+                specs: {
+                    'Display': '1.9" AMOLED Always-On',
+                    'Processor': 'Dual-Core 1.8GHz',
+                    'Memory': '32GB Storage',
+                    'Battery': '7 days typical use',
+                    'Water Resistance': '50m Swimming',
+                    'Sensors': 'Heart Rate, GPS, SpO2',
+                    'Connectivity': 'Bluetooth, Wi-Fi, LTE',
+                    'Compatibility': 'iOS & Android'
+                }
+            },
+            camera: {
+                name: 'Digital Camera',
+                icon: '📷',
+                specs: {
+                    'Sensor': '24.2MP APS-C CMOS',
+                    'Lens Mount': 'E-Mount Compatible',
+                    'ISO Range': '100-32000',
+                    'Video': '4K 60fps Recording',
+                    'Stabilization': '5-Axis In-Body',
+                    'Autofocus': '693 Phase Detection',
+                    'Battery': '710 shots per charge',
+                    'Weight': '503g (body only)'
+                }
+            },
+            speaker: {
+                name: 'Bluetooth Speaker',
+                icon: '🔊',
+                specs: {
+                    'Output Power': '20W Stereo',
+                    'Driver': 'Dual 10W Speakers',
+                    'Frequency': '65Hz - 20kHz',
+                    'Battery': '12 hours playback',
+                    'Bluetooth': 'Version 5.2',
+                    'Water Rating': 'IPX7 Waterproof',
+                    'Range': '30m Connection',
+                    'Weight': '600g'
+                }
+            },
+            gaming: {
+                name: 'Gaming Console',
+                icon: '🎮',
+                specs: {
+                    'CPU': 'Custom 8-Core AMD Zen 2',
+                    'GPU': 'Custom RDNA 2 Graphics',
+                    'Memory': '16GB GDDR6 RAM',
+                    'Storage': '1TB Custom SSD',
+                    'Resolution': '4K Gaming Support',
+                    'Frame Rate': 'Up to 120fps',
+                    'Ray Tracing': 'Hardware Accelerated',
+                    'Backwards Compatible': 'Previous Generation'
+                }
+            }
+        };
+
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login form handling
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username.trim() !== '' && password.trim() !== '') {
+                    showMainSite();
+                } else {
+                    alert('Please enter both username and password');
+                }
+            });
+
+            // Sign up form handling
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const newUsername = document.getElementById('newUsername').value;
+                const email = document.getElementById('email').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (newUsername.trim() !== '' && email.trim() !== '' && newPassword.trim() !== '' && confirmPassword.trim() !== '') {
+                    if (newPassword === confirmPassword) {
+                        showMainSite();
+                    } else {
+                        alert('Passwords do not match');
+                    }
+                } else {
+                    alert('Please fill in all fields');
+                }
+            });
+
+            // Contact form handling
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+
+            // Navigation between login and signup
+            document.getElementById('signupBtn').addEventListener('click', function() {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('signupPage').style.display = 'flex';
+            });
+
+            document.getElementById('backToLoginBtn').addEventListener('click', function() {
+                document.getElementById('signupPage').style.display = 'none';
+                document.getElementById('loginPage').style.display = 'flex';
+            });
+
+            // Main site navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    showPage(page);
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        function showMainSite() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('signupPage').style.display = 'none';
+            document.getElementById('mainSite').style.display = 'block';
+        }
+
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageName + 'Page').classList.add('active');
+        }
+
+        function showProductModal(productKey) {
+            const product = products[productKey];
+            const modal = document.getElementById('productModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSpecs = document.getElementById('modalSpecs');
+
+            // Set modal content
+            modalImage.textContent = product.icon;
+            modalTitle.textContent = product.name;
+            
+            // Clear and populate specs
+            modalSpecs.innerHTML = '';
+            Object.entries(product.specs).forEach(([key, value]) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span class="spec-label">${key}:</span>
+                    <span class="spec-value">${value}</span>
+                `;
+                modalSpecs.appendChild(li);
+            });
+
+            // Show modal
+            modal.style.display = 'flex';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProductModal();
+            }
+        });
+    </script>
+</body>
+</html>
