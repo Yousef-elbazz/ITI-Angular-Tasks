@@ -23,12 +23,10 @@ This course is designed to provide a solid foundation in frontend development, g
 
 ## 📁 Repository Structure
 
-## 📁 Repository Structure
-
 The course content is organized by daily tasks. Each folder contains practice exercises, examples, and notes for that day's topic.
 
-- [Day01_HTML](./Day01_HTML) – HTML Basics: structure, elements, forms, media  
-- [Day02_HTML](./Day02_HTML) – Semantic HTML and best practices  
+- [Day01_HTML](./Day-1-html) – HTML Basics: structure, elements, forms, media  
+- [Day02_HTML](./Day-2-html) – Semantic HTML and best practices  
 - [Day03_CSS](./Day03_CSS) – CSS Fundamentals: selectors, colors, layout  
 - [Day04_JS](./Day04_JS) – JavaScript Introduction: variables, data types, operators  
 - [Day05_JS](./Day05_JS) – Functions, conditionals, loops  
