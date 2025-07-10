@@ -23,6 +23,31 @@ This course is designed to provide a solid foundation in frontend development, g
 
 ## 📁 Repository Structure
 
+## 📁 Repository Structure
+
+The course content is organized by daily tasks. Each folder contains practice exercises, examples, and notes for that day's topic.
+
+- [Day01_HTML](./Day01_HTML) – HTML Basics: structure, elements, forms, media  
+- [Day02_HTML](./Day02_HTML) – Semantic HTML and best practices  
+- [Day03_CSS](./Day03_CSS) – CSS Fundamentals: selectors, colors, layout  
+- [Day04_JS](./Day04_JS) – JavaScript Introduction: variables, data types, operators  
+- [Day05_JS](./Day05_JS) – Functions, conditionals, loops  
+- [Day06_JS](./Day06_JS) – Arrays, objects, ES6+ features  
+- [Day07_JS](./Day07_JS) – DOM manipulation, events, interactivity  
+- [Day08_JS](./Day08_JS) – Advanced JS concepts and coding tasks  
+- [Day09_Angular](./Day09_Angular) – Angular setup, architecture, components  
+- [Day10_Angular](./Day10_Angular) – Templates, data binding, interpolation  
+- [Day11_Angular](./Day11_Angular) – Directives, pipes, structural logic  
+- [Day12_Angular](./Day12_Angular) – Services, dependency injection  
+- [Day13_Angular](./Day13_Angular) – Routing and navigation  
+- [Day14_Angular](./Day14_Angular) – Forms: Template-driven and Reactive  
+- [Day15_Angular](./Day15_Angular) – HTTP Client, APIs integration  
+- [Day16_Angular](./Day16_Angular) – RxJS and Observables basics  
+- [Day17_Angular](./Day17_Angular) – Angular mini project  
+- [notes](./notes) – Daily summaries and key takeaways in Markdown  
+- [projects](./projects) – Final Angular projects and demos
+  
+
 
 
 ---
