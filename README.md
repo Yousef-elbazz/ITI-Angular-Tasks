@@ -27,10 +27,10 @@ The course content is organized by daily tasks. Each folder contains practice ex
 
 - [Day01_HTML](./Day-1-html) – HTML Basics: structure, elements, forms, media  
 - [Day02_HTML](./Day-2-html) – Semantic HTML and best practices  
-- [Day03_CSS](./Day03_CSS) – CSS Fundamentals: selectors, colors, layout  
-- [Day04_JS](./Day04_JS) – JavaScript Introduction: variables, data types, operators  
-- [Day05_JS](./Day05_JS) – Functions, conditionals, loops  
-- [Day06_JS](./Day06_JS) – Arrays, objects, ES6+ features  
+- [Day03_CSS](./Day-3-Css) – CSS Fundamentals: selectors, colors, layout  
+- [Day04_JS](./Day-4-js) – JavaScript Introduction: variables, data types, operators  
+- [Day05_JS](./Day-5-js) – Functions, conditionals, loops  
+- [Day06_JS](./Day-6-js) – Arrays, objects, ES6+ features  
 - [Day07_JS](./Day07_JS) – DOM manipulation, events, interactivity  
 - [Day08_JS](./Day08_JS) – Advanced JS concepts and coding tasks  
 - [Day09_Angular](./Day09_Angular) – Angular setup, architecture, components  
