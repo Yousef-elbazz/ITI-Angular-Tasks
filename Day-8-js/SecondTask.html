@@ -1,0 +1,53 @@
+<!-- ✅ 2. AJAX GET – List users in <ul> -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button onclick="getUsers()">Load Users</button>
+<ul id="userList"></ul>
+
+<script>
+  function getUsers() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const users = JSON.parse(xhr.responseText);
+          const ul = document.getElementById("userList");
+          ul.innerHTML = "";
+          users.forEach(user => {
+            const li = document.createElement("li");
+            li.textContent = user.name;
+            ul.appendChild(li);
+          });
+        }
+      };
+
+      xhr.send();}
+</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        ul {
+            margin-top: 20px;
+            padding: 0;
+            list-style-type: none;
+        }
+        li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        </style>
+    </body>
+    </html>

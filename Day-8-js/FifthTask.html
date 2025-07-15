@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch with Spinner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #spinnerOutput {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="fetchWithSpinner()">Fetch with Loading</button>
+  <div id="spinnerOutput"></div>
+
+  <script>
+    function fetchWithSpinner() {
+      const div = document.getElementById("spinnerOutput");
+      div.innerHTML = "<p>Loading...</p>";
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            div.innerHTML = `<h3>${data.title}</h3><p>${data.body}</p>`;
+          } else {
+            div.innerHTML = "<p>Error loading data.</p>";
+          }
+        }
+      };
+
+      xhr.send();
+    }
+  </script>
+
+</body>
+</html>

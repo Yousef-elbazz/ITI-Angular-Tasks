@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Load Courses</title>
+</head>
+<body>
+  <button onclick="loadCourses()">📚 Load Courses</button>
+  <div id="courses"></div>
+
+  <script>
+    function loadCourses() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "data.json", true);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const courses = JSON.parse(xhr.responseText);
+          let output = "<ul>";
+          courses.forEach(course => {
+            output += `<li>${course.title} - ${course.duration}</li>`;
+          });
+          output += "</ul>";
+          document.getElementById("courses").innerHTML = output;
+        }
+      };
+
+      xhr.send();
+    }
+  </script>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        }
+        button {
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        }
+        #courses {
+        margin-top: 20px;
+        }
+        ul {
+        list-style-type: none;
+        padding: 0;
+        }
+        li {
+        padding: 5px 0;
+        border-bottom: 1px solid #ccc;
+        }
+    </style>
+</body>
+</html>

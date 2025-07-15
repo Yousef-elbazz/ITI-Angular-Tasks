@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Load Dropdown with XMLHttpRequest</title>
+</head>
+<body>
+
+  <select id="userDropdown">
+    <option>-- Select User --</option>
+  </select>
+  <button onclick="loadDropdown()">Load Dropdown</button>
+
+  <script>
+    function loadDropdown() {
+      const select = document.getElementById("userDropdown");
+      select.innerHTML = '<option>Loading users...</option>';
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const users = JSON.parse(xhr.responseText);
+            select.innerHTML = '<option>-- Select User --</option>';
+            users.forEach(function(user) {
+              const option = document.createElement("option");
+              option.value = user.id;
+              option.textContent = user.name;
+              select.appendChild(option);
+            });
+          } else {
+          }
+        }
+      };
+      xhr.send();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Error Example</title>
+</head>
+<body>
+
+  <button onclick="getData()">Test Invalid URL</button>
+  <div id="errorDiv"></div>
+
+  <script>
+    function getData() {
+      // نجيب بيانات من رابط خطأ عمداً
+      fetch("https://jsonplaceholder.typicode.com/invalid-url")
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error("There is Error here");
+          }
+          return response.json();
+        })
+        .then(function(data) {
+          document.getElementById("errorDiv").textContent = JSON.stringify(data);
+        })
+        .catch(function(error) {
+            document.getElementById("errorDiv").textContent = "Error : " + error.message;
+        });
+    }
+  </script>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #errorDiv {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+</style>
+</body>
+</html>
