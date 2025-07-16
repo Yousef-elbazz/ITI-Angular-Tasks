@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ECMAScript Lab1</title>
+</head>
+<body>
+    <h1>ECMAScript Lab1</h1>
+  <script>
+    // --------------------------------------
+    // ✅ Task 1 - Array operations
+    // --------------------------------------
+    console.log("Array Operations");
+    let numbers = [23, 77, 12, 65, 90, 3, 54, 45, 67, 89, 100, 50];
+
+    // Sort ascending
+    let ascending = [...numbers].sort((a, b) => a - b);
+    console.log("Ascending:", ascending);
+
+    // Sort descending
+    let descending = [...numbers].sort((a, b) => b - a);
+    console.log("Descending:", descending);
+
+    // Filter numbers > 50
+    let largerThan50 = numbers.filter(n => n > 50);
+    console.log("Numbers > 50:", largerThan50);
+
+    // Display max and min
+    let max = Math.max(...numbers);
+    let min = Math.min(...numbers);
+    console.log("Max:", max);
+    console.log("Min:", min);
+
+    console.log("----------");
+
+    // --------------------------------------
+    // ✅ Task 2 - Function with rest + template literals
+    // --------------------------------------
+    console.log("\nFunction with Rest Parameters and Template Literals");
+    function calculate(operation, ...nums) {
+      let result;
+
+      if (operation === "sum") {
+        result = nums.reduce((a, b) => a + b, 0);
+      } else if (operation === "multiply") {
+        result = nums.reduce((a, b) => a * b, 1);
+      } else {
+        return console.log("Invalid operation");
+      }
+
+      console.log(`Result of ${operation} operation for "${nums.join(",")}" = ${result}`);
+    }
+
+    calculate("sum", 3, 1, 6, 3);        // 13
+    calculate("multiply", 2, 3, 4);      // 24
+
+    console.log("----------");
+
+    // --------------------------------------
+    // ✅ Task 3 - Anonymous object with object literals
+    // --------------------------------------
+    console.log("\nAnonymous Object with Object Literals");
+    const projectId = 100;
+    const projectName = "ITI Angular Bootcamp";
+    const duration = "120 hours";
+
+    const project = {
+      projectId,
+      projectName,
+      duration,
+      printData: function () {
+        console.log(`Project ID: ${this.projectId}`);
+        console.log(`Project Name: ${this.projectName}`);
+        console.log(`Duration: ${this.duration}`);
+      }
+    };
+
+    project.printData();
+
+  </script>
+</body>
+</html>
