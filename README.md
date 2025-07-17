@@ -38,7 +38,7 @@ This course is designed to provide a solid foundation in frontend development, g
 - [x] HTML  
 - [x] CSS  
 - [x] JavaScript  
-- [ ] ES6  
+- [x] ES6  
 - [ ] HTML5 & CSS3  
 - [ ] Bootstrap  
 - [ ] Angular
