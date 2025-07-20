@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 3 - ES6+ Features</title>
+</head>
+<body>
+  <h2>ES6 Last Session</h2>
+
+  <script>
+    // ✅ 1️ - To-Do List Manager
+    console.log("\nTo-Do List Manager");
+
+    class Task{
+        constructor(name, TaskCompleted = false) {
+            this.name = name;
+            this.TaskCompleted = TaskCompleted;
+        }
+    }
+
+    class TaskManager{
+        constructor() {
+            this.tasks = new Set();
+        }
+
+        addTask(task) {
+            this.tasks.add(task);
+            console.log(`Task "${task.name}" added.`);
+        }
+
+        displayTasks() {
+            console.log(" Current Tasks:");
+            this.tasks.forEach(task => console.log(task.name));
+        }
+
+        getCompletedTasks() {
+            return [...this.tasks].filter(task => task.TaskCompleted);
+        }
+    }
+
+
+    const task1 = new Task("Study ES6", true);
+    const task2 = new Task("Study React", false);
+    const task3 = new Task("Study Angular", true);
+
+    const manager = new TaskManager();
+    manager.addTask(task1);
+    manager.addTask(task2);
+    manager.addTask(task3);
+
+    manager.displayTasks();
+
+    console.log(" Completed Tasks:");
+    console.log(manager.getCompletedTasks());
+
+
+    // ✅ 2️ - User Data Processing
+    console.log("\nUser Data Processing");
+
+    const users = [
+      { name: "Yousef", age: 20, active: true },
+      { name: "Ebrahim", age: 30, active: false },
+      { name: "Elbaz", age: 40, active: true },
+    ];
+
+    const activeUsers = users.filter(user => user.active);
+    const avgAge = activeUsers.reduce((sum, u) => sum + u.age, 0) / activeUsers.length;
+    console.log("Average Age of Active Users:", avgAge);
+
+    // ✅ 3️ - Frequency Counter
+    console.log("\nFrequency Counter");
+
+    function charFrequency(str) {
+      const map = new Map();
+      // هنا بنعد كل حرف كام مره اتكرر
+      for (const char of str) {
+        map.set(char, (map.get(char) || 0) + 1);
+      }
+
+      let maxChar = '';
+      let maxFreq = 0;
+      for (const [char, freq] of map.entries()) {
+        if (freq > maxFreq) {
+          maxChar = char;
+          maxFreq = freq;
+        }
+      }
+      return { maxChar, maxFreq };
+    }
+
+    console.log(" Most Frequent Char:", charFrequency("Yousef Ebrahim Elbaz"));
+
+    // ✅ 4 - Array Utilities
+    console.log("\nArray Utilities");
+
+    const str = "Yousef";
+    const strArray = Array.from(str);
+    console.log("String to Array:", strArray);
+
+    const productIDs = Array.of(101, 102, 103);
+    console.log("Product IDs:", productIDs);
+
+    const products = [
+      { id: 1, name: "Mouse" },
+      { id: 2, name: "Keyboard" },
+      { id: 3, name: "Screen" }
+    ];
+
+    const foundProduct = products.find(p => p.name === "Keyboard");
+    const foundIndex = products.findIndex(p => p.id === 3);
+    console.log(" Found Product:", foundProduct); // => id = 2
+    console.log(" Found Index:", foundIndex); // => index =2
+
+    // ✅ 5 - String Checks
+    console.log("\nString Checks");
+
+    const email = "yousef@gmail.com";
+    const isValid =
+      email.includes("@gmail") &&
+      email.startsWith("yousef") &&
+      email.endsWith(".com");
+
+    console.log(`Is "${email}" a valid Gmail address? => `, isValid);
+
+    // ✅ 6 - Math Utilities
+    console.log("\nMath Utilities");
+
+    console.log("Truncate:", Math.trunc(4.9)); // 4
+    console.log("Round:", Math.round(4.5)); // 5    
+    console.log("Sign:", Math.sign(-10));// -1
+    console.log("Cube Root:", Math.cbrt(27));// 3
+    console.log("Log2:", Math.log2(8));// 3
+    console.log("Log10:", Math.log10(100));// 2
+
+  </script>
+</body>
+</html>
