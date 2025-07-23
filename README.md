@@ -39,8 +39,8 @@ This course is designed to provide a solid foundation in frontend development, g
 - [x] CSS  
 - [x] JavaScript  
 - [x] ES6  
-- [ ] HTML5 & CSS3  
-- [ ] Bootstrap  
+- [x] HTML5 & CSS3  
+- [x] Bootstrap  
 - [ ] Angular
 
 ---
@@ -62,7 +62,9 @@ This repository will be continuously updated with code samples, project files, a
 
 ## 📚 Resources
 
+- [W3schools-HTML](https://www.w3schools.com/html/)
 - [JavaScript.info](https://javascript.info/)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 
 ---
 
