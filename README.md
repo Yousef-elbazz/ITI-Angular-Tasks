@@ -63,6 +63,7 @@ This repository will be continuously updated with code samples, project files, a
 ## 📚 Resources
 
 - [W3schools-HTML](https://www.w3schools.com/html/)
+- [W3schools-CSS]([https://www.w3schools.com/html/](https://www.w3schools.com/css/))
 - [JavaScript.info](https://javascript.info/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 
