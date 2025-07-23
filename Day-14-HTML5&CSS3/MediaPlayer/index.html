@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="player">
+    <div class="header">
+      <span class="back">&#8592;</span>
+      <h2>Quran Player</h2>
+      <span class="menu">&#8942;</span>
+    </div>
+
+    <div class="album-art">
+      <img src="MediaPlayer/cover.jpeg" alt="Album Art" />
+    </div>
+
+    <div class="progress-container">
+      <span id="current-time">00:00</span>
+      <input type="range" id="progress" min="0" value="0">
+      <span id="duration">03:15</span>
+    </div>
+
+    <div class="song-info">
+      <h3>سورة الفجر الشيخ ياسر الدوسري</h3>
+      <p>Quran Recitation</p>
+    </div>
+
+    <div class="controls">
+      <button id="prev">&#9198;</button>
+      <button id="play">&#9654;</button>
+      <button id="next">&#9197;</button>
+    </div>
+
+    <div class="volume">
+      <p>Volume</p>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+    </div>
+
+    <audio id="audio" src="MediaPlayer/سورة الفجر الشيخ ياسر الدوسري.mp3"></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

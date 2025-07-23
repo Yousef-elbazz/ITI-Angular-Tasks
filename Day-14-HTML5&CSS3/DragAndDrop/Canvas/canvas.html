@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Draw Y on Canvas</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    canvas {
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="300" height="300"></canvas>
+
+<script>
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = "red";
+
+  ctx.moveTo(100, 50);   
+  ctx.lineTo(150, 150);  
+
+    ctx.moveTo(200, 50);   
+
+   ctx.lineTo(150, 150);  
+
+   ctx.moveTo(150, 150);  
+  ctx.lineTo(150, 250);  
+  ctx.stroke();
+</script>
+
+</body>
+</html>

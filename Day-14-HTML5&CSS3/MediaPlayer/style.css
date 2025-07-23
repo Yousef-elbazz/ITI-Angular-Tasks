@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  background: #1e1e1e;
+  font-family: sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.player {
+  background: #333;
+  border-radius: 20px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 0 10px #000;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.album-art img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+#progress {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.volume {
+  margin-top: 10px;
+}
