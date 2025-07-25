@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Showcase | Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .product-image {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+    .dashboard-table img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+  <a class="navbar-brand" href="#">ProductDash</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="filterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Filter
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+          <li><a class="dropdown-item" href="#">Filter by Category</a></li>
+          <li><a class="dropdown-item" href="#">Filter by Price</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-outline-primary">Login</button>
+</nav>
+
+
+  <!-- Alert -->
+  <div class="container mt-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      Product added successfully!
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard Table -->
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+  <h4>Product List</h4>
+  <div>
+    <button class="btn btn-primary me-2">Add New Product</button>
+    <div class="btn-group" role="group">
+      <button class="btn btn-secondary">Edit Selected</button>
+      <button class="btn btn-secondary">Delete Selected</button>
+    </div>
+  </div>
+</div>
+
+    <table class="table table-bordered bg-white dashboard-table">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price ($)</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><img src="mouse.jpeg" alt="Mouse"></td>
+          <td>Wireless Mouse</td>
+          <td>Accessories</td>
+          <td>25.99</td>
+          <td>120</td>
+          <td>
+            <button class="btn btn-sm btn-info">View</button>
+            <button class="btn btn-sm btn-warning">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><img src="speaker.jpeg" alt="Speaker"></td>
+          <td>Bluetooth Speaker</td>
+          <td>Audio</td>
+          <td>45.00</td>
+          <td>60</td>
+          <td>
+            <button class="btn btn-sm btn-info">View</button>
+            <button class="btn btn-sm btn-warning">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><img src="keyboard.jpeg" alt="Keyboard"></td>
+          <td>Gaming Keyboard</td>
+          <td>Accessories</td>
+          <td>70.00</td>
+          <td>30</td>
+          <td>
+            <button class="btn btn-sm btn-info">View</button>
+            <button class="btn btn-sm btn-warning">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!-- Featured Products -->
+  <div class="container mt-4">
+    <h2 class="mb-4 text-center">Featured Products</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="headphone.jpeg" alt="Headphones" class="product-image">
+          <h5>Noise Cancelling Headphones</h5>
+          <p>Experience crystal clear sound with top noise cancelling technology</p>
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="smartWatch.jpg" alt="Smart Watch" class="product-image">
+          <h5>Smart Watch</h5>
+          <p>Track your fitness and stay connected with our latest smartwatch</p>
+          <button class="btn btn-success">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="ssd.jpeg" alt="SSD" class="product-image">
+          <h5>Portable SSD</h5>
+          <p>Fast, reliable, and portable storage for all your important files</p>
+          <button class="btn btn-warning text-white">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
