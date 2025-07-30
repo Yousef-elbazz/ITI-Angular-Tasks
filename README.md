@@ -66,7 +66,7 @@ This repository will be continuously updated with code samples, project files, a
 - [W3schools-CSS](https://www.w3schools.com/css/)
 - [JavaScript.info](https://javascript.info/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
-- [Angular Documentation]((https://angular.dev/))
+- [Angular Documentation](https://angular.dev/)
 
 ---
 
